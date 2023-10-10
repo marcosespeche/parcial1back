@@ -15,7 +15,7 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
     @GetMapping("/search1")
     public ResponseEntity<?> search1(@RequestBody Persona persona) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoJpqlIndex(persona.getNombre(), persona.getApellido()));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoQuery(persona.getNombre(), persona.getApellido()));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
