@@ -13,41 +13,41 @@ import org.springframework.web.bind.annotation.*;
 public class PersonaController extends BaseControllerImpl<Persona, PersonaService>{
 
     @GetMapping("/search1")
-    public ResponseEntity<?> search1(@RequestBody Persona persona) {
+    public ResponseEntity<?> search1(@RequestParam String nombre, String apellido) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoQuery(persona.getNombre(), persona.getApellido()));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoQuery(nombre, apellido));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
     @GetMapping("/search2")
-    public ResponseEntity<?> search2(@RequestBody Persona persona) {
+    public ResponseEntity<?> search2(@RequestParam String nombre, String apellido) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoJpqlIndex(persona.getNombre(), persona.getApellido()));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoJpqlIndex(nombre, apellido));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
     @GetMapping("/search3")
-    public ResponseEntity<?> search3(@RequestBody Persona persona) {
+    public ResponseEntity<?> search3(@RequestParam String nombre, String apellido) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoJpqlNomb(persona.getNombre(), persona.getApellido()));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoJpqlNomb(nombre, apellido));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
     @GetMapping("/search4")
-    public ResponseEntity<?> search4(@RequestBody Persona persona) {
+    public ResponseEntity<?> search4(@RequestParam String nombre, String apellido) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoNativa(persona.getNombre(), persona.getApellido()));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoNativa(nombre, apellido));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
     @GetMapping("/search4paged")
-    public ResponseEntity<?> search4paged(@RequestBody Persona persona, Pageable pageable) {
+    public ResponseEntity<?> search4paged(@RequestParam String nombre, String apellido, Pageable pageable) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoNativaPaged(persona.getNombre(), persona.getApellido(), pageable));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.searchNombreApellidoNativaPaged(nombre, apellido, pageable));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
